@@ -27,6 +27,8 @@ The unit tests can be run using:
 [bash] go test -v ./pkg/...
 ```
 
+Here's a screenshot of what it looks like:
+
 ![Screenshot](images/screenshot.png)
 
 ## Commentary
@@ -41,6 +43,18 @@ There are three packages:
   * `pkg/schema` defines the schema for reports and updating a report.
 
 There is also a `html` folder which contains the frontend page and javascript.
+
+## Improvements
+
+Clearly within the bounds of the time allowed this fulfills the brief, I believe. One may want to consider:
+
+  * Adding a sructured database, either in-memory or on persistent storage. sqlite would fit the bill for a
+    single-node server.
+  * Adding more unit tests for the "unhappy paths". At the moment, only the happy paths are tested.
+  * Putting together a specification for the business rules. All there is at the moment is that reports which
+    are in state "RESOLVED" are not displayed.
+
+Any questions? LMK!
 
 ## Appendix: Challenge description
 
