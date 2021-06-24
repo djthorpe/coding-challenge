@@ -1,9 +1,46 @@
-# Example Full-Stack Challenge
+# Example Full-Stack Challenge Solution
 
-We're excited that you're interested in performing the coding challenge.
-The purpose of this test is to see how you approach problems as well as to evaluate the quality of your code.
+Time Spent: 2hrs 45 mins
 
-## Challenge description
+This is a solution for the full-stack challenge, includes golang, javascript and HTML. In order to run the server,
+you'll need a recent go compiler. Then, you can compile and run the solution with the following set of commands:
+
+```
+[bash] git clone git@github.com:djthorpe/coding-challenge.git
+[bash] cd coding-challenge
+[bash] go run ./cmd/spamserver data/reports.json
+```
+
+The single argument is the path to the data file, and loads the data into the memory. It serves on port `:8080` 
+on localhost (so then navigate to http://localhost:8080/html/ to see the frontend). You can run it on a 
+different port with the -addr flag, for example:
+
+```
+[bash] go run ./cmd/spamserver -addr :9001 data/reports.json
+```
+
+The unit tests can be run using:
+
+```
+[bash] git clone git@github.com:djthorpe/coding-challenge.git
+[bash] cd coding-challenge
+[bash] go test -v ./pkg/...
+```
+
+## Commentary
+
+The command-line tool is in the `cmd` folder and compiles in the HTML with the go code, so that it can create
+a single binary for serving.
+
+There are three packages:
+
+  * `pkg/server` implements a basic HTTP server;
+  * `pkg/backend` implements the backend database and handler functions;
+  * `pkg/schema` defines the schema for reports and updating a report.
+
+There is also a `html` folder which contains the frontend page and javascript.
+
+## Appendix: Challenge description
 
 This challenge imagines that we have a social media platform that is under attack from spam. We have implemented a reporting system for users that lets them report spam to the platform, and our spam protection team.  
 
@@ -21,13 +58,3 @@ Furthermore we need a way to _block_ the content and _resolve_ those reports. Th
 - **`Block`:** Means that the content should no longer be available to users
 - **`Resolve`:** Means that the report is considered "resolved", and it is no longer visible to the spam protection team
 - **`Details`:** Functionality can be ignored.
-
-## Instructions
-- Please don't spend more than **3 hours**.
-- Choose whatever frameworks you are comfortable with and that lets you achieve a solution in the given time limit. Please nothing too esoteric. We prefer Java, Ruby, Node.js, Python or Elixir.
-- Provide the solution source code either as zip or as a link to the code repository
-
-## What we're looking for:
-- Code quality
-- Technical choices
-- A runnable full-stack application
