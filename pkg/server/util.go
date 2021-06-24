@@ -1,17 +1,27 @@
 package server
 
 import (
+	"context"
 	"encoding/json"
 	"log"
 	"net/http"
 )
 
+///////////////////////////////////////////////////////////////////////////////
+// CONSTANTS
+
 const (
 	ContentTypeJSON = "application/json"
+	KeyParams       = "KeyParams"
 )
 
 ///////////////////////////////////////////////////////////////////////////////
 // METHODS
+
+// RequestWithParams returns a request with set parameter
+func RequestWithParams(req *http.Request, params []string) *http.Request {
+	return req.Clone(context.WithValue(req.Context(), KeyParams, params))
+}
 
 // RequestParams returns parameters for a path or nil otherwise
 func RequestParams(req *http.Request) []string {

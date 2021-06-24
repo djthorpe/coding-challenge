@@ -1,7 +1,6 @@
 package server
 
 import (
-	"context"
 	"net/http"
 	"regexp"
 )
@@ -19,13 +18,6 @@ type route struct {
 type Router struct {
 	routes []route
 }
-
-///////////////////////////////////////////////////////////////////////////////
-// CONSTANTS
-
-const (
-	KeyParams = "KeyParams"
-)
 
 ///////////////////////////////////////////////////////////////////////////////
 // LIFECYCLE
@@ -54,7 +46,7 @@ func (this *Router) AddHandler(re *regexp.Regexp, handler http.Handler) {
 func (this *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	for _, route := range this.routes {
 		if args := route.re.FindStringSubmatch(req.URL.Path); len(args) >= 1 {
-			route.handler(w, req.Clone(context.WithValue(req.Context(), KeyParams, args[1:])))
+			route.handler(w, RequestWithParams(req, args[1:]))
 			return
 		}
 	}

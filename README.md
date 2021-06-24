@@ -27,6 +27,8 @@ The unit tests can be run using:
 [bash] go test -v ./pkg/...
 ```
 
+![Screenshot](images/screenshot.png)
+
 ## Commentary
 
 The command-line tool is in the `cmd` folder and compiles in the HTML with the go code, so that it can create
