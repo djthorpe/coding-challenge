@@ -46,7 +46,7 @@ There is also a `html` folder which contains the frontend page and javascript.
 
 ## Improvements
 
-Clearly within the bounds of the time allowed this fulfills the brief, I believe. One may want to consider:
+Within the bounds of the time allowed, I believe this fulfills the brief. One may want to consider:
 
   * Adding a sructured database, either in-memory or on persistent storage. sqlite would fit the bill for a
     single-node server.
